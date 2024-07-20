@@ -3,11 +3,8 @@ plugins {
 }
 
 java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
-        vendor.set(org.gradle.jvm.toolchain.JvmVendorSpec.AZUL)
-    }
+    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_8
 }
 
 repositories {
@@ -36,12 +33,5 @@ tasks.processResources.configure {
 }
 
 tasks.named<Jar>("jar") {
-    for (projectName in arrayOf(":java9")) {
-        from(project(projectName).tasks.compileJava.get().outputs) {
-            include("**/*.class")
-        }
-        dependsOn(project(projectName).tasks.compileJava.get())
-    }
-
     archiveBaseName.set("pipeblocker-fabric")
 }

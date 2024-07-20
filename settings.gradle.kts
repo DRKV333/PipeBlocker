@@ -18,12 +18,6 @@ pluginManagement {
   }
 }
 
-plugins {
-  // Automatic toolchain provisioning
-  id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
-}
-
-include("java9")
 include("dummy")
 include("common")
 include("forge17_112")

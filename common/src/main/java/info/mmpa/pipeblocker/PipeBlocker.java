@@ -228,8 +228,6 @@ public class PipeBlocker {
         String className;
         if ("1.8".equals(javaVersion)) {
             className = "info.mmpa.pipeblocker.java8.FilterSetter";
-        } else if (javaVersion.chars().allMatch(Character::isDigit) && Integer.parseInt(javaVersion) > 8) {
-            className = "info.mmpa.pipeblocker.java9.FilterSetter";
         } else {
             System.err.println("Unsupported java version: " + javaVersion);
             throw new RuntimeException("Unsupported java version: " + javaVersion);
